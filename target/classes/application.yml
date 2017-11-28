@@ -1,0 +1,8 @@
+# Bot token and username
+bot:
+  message:
+    token: 260464236:AAHNWWCkMqkYott-ebTSqAF-VsWtjid8RAw
+    username: kpc_test_message_bot
+  command:
+    token: 269437500:AAEwAYpqj5H97RdJXbRfVJutzxNvNxwyGMo
+    username: kpc_test_command_bot
