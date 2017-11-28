@@ -3,6 +3,8 @@
  */
 package kr.co.kpcard.bots;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
+import kr.co.kpcard.bots.command.HelloCommand;
+import kr.co.kpcard.bots.command.SwitchCommand;
+
 /**
  * @author chris
  *
@@ -22,6 +27,12 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 public class CommandHandler extends TelegramLongPollingCommandBot {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommandHandler.class);
+	
+	@Autowired
+	private HelloCommand	helloCommand;
+	
+	@Autowired
+	private SwitchCommand	switchCommand;
 	
 	@Value("${bot.command.token}")
 	private String token;
@@ -33,8 +44,14 @@ public class CommandHandler extends TelegramLongPollingCommandBot {
 	public CommandHandler(@Value("${bot.command.username}") String botUsername) {
 		super(botUsername);
 		// TODO Auto-generated constructor stub
+//		register(new SwitchCommand("Switch", "Execute switch command."));
 	}
 
+	@PostConstruct
+    public void init(){
+        register(helloCommand);
+        register(switchCommand);
+    }
 	/* (non-Javadoc)
 	 * @see org.telegram.telegrambots.bots.DefaultAbsSender#getBotToken()
 	 */

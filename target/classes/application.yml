@@ -6,3 +6,15 @@ bot:
   command:
     token: 269437500:AAEwAYpqj5H97RdJXbRfVJutzxNvNxwyGMo
     username: kpc_test_command_bot
+    hello:
+      identifier: Hello
+      description: Say hello to this bot
+    switch:
+      identifier: Switch
+      description: Execute switch command.
+
+switch:
+  api:
+    url: http://61.251.167.9:8080/cgi-bin/xmlrpc_server
+    method: arrayos_cli_config
+    enable: kpcard
