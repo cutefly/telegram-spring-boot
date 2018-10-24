@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package kr.co.kpcard.bots;
 
@@ -21,19 +21,18 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 public class MessageHandler extends TelegramLongPollingBot {
 
 	private static final Logger logger = LoggerFactory.getLogger(MessageHandler.class);
-	
+
 	@Value("${bot.message.token}")
 	private String token;
-	
+
 	@Value("${bot.message.username}")
 	private String username;
-	
+
 	/* (non-Javadoc)
 	 * @see org.telegram.telegrambots.generics.LongPollingBot#getBotUsername()
 	 */
 	@Override
 	public String getBotUsername() {
-		// TODO Auto-generated method stub
 		return username;
 	}
 
@@ -42,22 +41,23 @@ public class MessageHandler extends TelegramLongPollingBot {
 	 */
 	@Override
 	public String getBotToken() {
-		// TODO Auto-generated method stub
 		return token;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.telegram.telegrambots.generics.LongPollingBot#onUpdateReceived(org.telegram.telegrambots.api.objects.Update)
 	 */
+	/**
+	 * 이벤트 수신 시 동작
+	 */
 	@Override
 	public void onUpdateReceived(Update update) {
-		// TODO Auto-generated method stub
 		Integer		id;
 		String		text;
 		String		message;
-		
+
 		logger.debug(update.toString());
-		message = String.format("Message from id = %d, firstName = %s, lastName = %s", 
+		message = String.format("Message from id = %d, firstName = %s, lastName = %s",
 				update.getMessage().getFrom().getId(),
 				update.getMessage().getFrom().getFirstName(),
 				update.getMessage().getFrom().getLastName());
@@ -65,7 +65,7 @@ public class MessageHandler extends TelegramLongPollingBot {
 		logger.debug(String.format("text = %s", update.getMessage().getText()));
 		id = update.getMessage().getFrom().getId();
 		text = update.getMessage().getText();
-		
+
 		SendMessage	sendMessage = new SendMessage();
 //		sendMessage.setChatId("@KPCChannel");
 		sendMessage.setChatId(id.toString());
@@ -73,7 +73,7 @@ public class MessageHandler extends TelegramLongPollingBot {
 			sendMessage.setText(String.format("Your id is %s", id));
 		else
 			sendMessage.setText(text);
-				
+
 		try {
 			Message recvNessage = execute(sendMessage);
 			logger.debug(recvNessage.toString());

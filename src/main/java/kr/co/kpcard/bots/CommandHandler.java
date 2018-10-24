@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package kr.co.kpcard.bots;
 
@@ -27,16 +27,16 @@ import kr.co.kpcard.bots.command.SwitchCommand;
 public class CommandHandler extends TelegramLongPollingCommandBot {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommandHandler.class);
-	
+
 	@Autowired
 	private HelloCommand	helloCommand;
-	
+
 	@Autowired
 	private SwitchCommand	switchCommand;
-	
+
 	@Value("${bot.command.token}")
 	private String token;
-	
+
 	/**
 	 * @param botUsername
 	 */
@@ -57,16 +57,17 @@ public class CommandHandler extends TelegramLongPollingCommandBot {
 	 */
 	@Override
 	public String getBotToken() {
-		// TODO Auto-generated method stub
 		return token;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.telegram.telegrambots.bots.commandbot.TelegramLongPollingCommandBot#processNonCommandUpdate(org.telegram.telegrambots.api.objects.Update)
 	 */
+	/**
+	 * 이벤트 수신 시 동작
+	 */
 	@Override
 	public void processNonCommandUpdate(Update update) {
-		// TODO Auto-generated method stub
 		if (update.hasMessage()) {
             Message message = update.getMessage();
 

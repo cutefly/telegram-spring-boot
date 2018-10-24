@@ -3,7 +3,7 @@ Implementation-Title: telegram-spring-boot
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: chris
 Implementation-Vendor-Id: kr.co.kpcard
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_181
 Implementation-URL: http://projects.spring.io/spring-boot/telegram-spr
  ing-boot/
 Created-By: Maven Integration for Eclipse
